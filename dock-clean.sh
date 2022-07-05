@@ -1,3 +1,8 @@
 #PURGE DOCKER
 
-docker rm -f $(docker ps -q -a) || echo "Nothing Found"
+container_id=$(docker ps -q -a)
+if [[ -n "$container_id" ]]; then
+  docker rm -f $container_id
+else
+   echo "No Container Running..!!!"
+fi
